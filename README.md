@@ -1,90 +1,238 @@
-# Obsidian Sample Plugin
+# Word and Folder Counter
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+一个适用于 Obsidian 的文件与文件夹统计插件。
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+支持实时统计：
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open modal (simple)" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+- 字数
+- 字符数
+- 行数
+- 页数
+- 文件数量
+- 文件大小
+- 创建时间
+- 修改时间
+- 文件夹汇总统计
 
-## First time developing plugins?
+并直接显示在 Obsidian 文件管理器中。
 
-Quick starting guide for new plugin devs:
+---
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+# 功能特性
 
-## Releasing new releases
+## 📄 笔记统计
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+支持：
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+- 字数统计
+- 字符统计
+- 行数统计
+- 页数统计
+- 目标字数完成度
+- 创建时间
+- 修改时间
+- 文件大小
 
-## Adding your plugin to the community plugin list
+支持同时显示多个统计项。
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+---
 
-## How to use
+## 📁 文件夹统计
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+自动统计文件夹内：
 
-## Manually installing the plugin
+- 总字数
+- 总文件数
+- 总字符数
+- 总页数
+- 总文件大小
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+支持递归统计子文件夹。
 
-## Improve code quality with eslint
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- This project already has eslint preconfigured, you can invoke a check by running`npm run lint`
-- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.
-- A GitHub action is preconfigured to automatically lint every commit on all branches.
+---
 
-## Funding URL
+## 🗂 根目录统计
 
-You can include funding URLs where people who use your plugin can financially support it.
+支持对整个 Vault 根目录进行统计：
 
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
+- 全库字数
+- 全库文件数
+- 全库文件大小
 
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
+---
+
+## ⚡ 实时更新
+
+自动监听：
+
+- 文件创建
+- 文件修改
+- 文件删除
+- 文件重命名
+
+无需手动刷新。
+
+---
+
+## 🎨 高级显示格式
+
+支持：
+
+- 自定义后缀
+- 自定义分隔符
+- 标签透明度
+- 行内显示
+- 右侧显示
+- 下方显示
+
+---
+
+## 🧠 智能内容过滤
+
+可选择忽略：
+
+- 代码块
+- 注释
+- 脚注
+- 链接隐藏部分
+
+让统计结果更准确。
+
+---
+
+## 📦 支持文件类型
+
+默认支持：
+
+- `.md`
+- `.txt`
+- `.canvas`
+- `.tex`
+- `.rtf`
+- `.qmd`
+- `.rmd`
+
+支持自定义扩展名过滤。
+
+---
+
+# 安装方式
+
+## 手动安装
+
+将以下文件复制到：
+
+```text
+Vault/.obsidian/plugins/word-and-folder-counter/
 ```
 
-If you have multiple URLs, you can also do:
+文件：
 
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
+```text
+main.js
+manifest.json
+styles.css（如果有）
 ```
 
-## API Documentation
+然后：
 
-See https://docs.obsidian.md
+```text
+Obsidian → 设置 → 社区插件 → 启用插件
+```
+
+---
+
+# 使用说明
+
+安装后插件会自动：
+
+- 扫描整个 Vault
+- 建立缓存
+- 在文件管理器中显示统计信息
+
+---
+
+# 配置项
+
+插件支持：
+
+| 配置       | 说明                 |
+| ---------- | -------------------- |
+| 统计类型   | 字数 / 字符 / 页数等 |
+| 文件夹统计 | 是否与笔记显示一致   |
+| 根目录统计 | 是否单独显示         |
+| 自定义后缀 | 自定义单位           |
+| 数字缩写   | 例如 12000 → 1.2w    |
+| 排除代码块 | 不统计代码内容       |
+| 排除脚注   | 不统计脚注           |
+| 文件过滤   | 指定统计扩展名       |
+
+---
+
+# 快捷命令
+
+插件提供：
+
+- 重新统计整个 Vault
+- 切换统计类型
+- 切换缩写模式
+
+可在：
+
+```text
+命令面板（Ctrl/Cmd + P）
+```
+
+中使用。
+
+---
+
+# 性能优化
+
+插件使用：
+
+- 缓存机制
+- 防抖更新
+- 增量统计
+
+即使大型 Vault 也能保持较好的性能。
+
+---
+
+# 截图
+
+你可以在这里放插件截图：
+
+```text
+assets/screenshot.png
+```
+
+示例：
+
+```markdown
+![preview](assets/screenshot.png)
+```
+
+---
+
+# 致谢
+
+感谢：
+
+- Obsidian API
+- Obsidian 社区
+- [https://github.com/isaaclyman/novel-word-count-obsidian](https://github.com/isaaclyman/novel-word-count-obsidian)
+
+---
+
+# License
+
+MIT License
+
+---
+
+# 作者
+
+GitHub：
+
+https://github.com/weiraing
