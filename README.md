@@ -131,7 +131,7 @@ Vault/.obsidian/plugins/word-and-folder-counter/
 ```text
 main.js
 manifest.json
-styles.css（如果有）
+styles.css
 ```
 
 然后：
@@ -201,17 +201,7 @@ Obsidian → 设置 → 社区插件 → 启用插件
 
 # 截图
 
-你可以在这里放插件截图：
-
-```text
-assets/screenshot.png
-```
-
-示例：
-
-```markdown
-![preview](assets/screenshot.png)
-```
+![](img.png)
 
 ---
 
