@@ -1,0 +1,10 @@
+{
+  "id": "word-and-folder-counter",
+  "name": "Word and Folder Counter",
+  "description": "An Obsidian plugin for counting words, characters, lines, pages, file sizes, and folder statistics in notes and directories.",
+  "version": "1.0.2",
+  "author": "weiraing",
+  "authorUrl": "https://github.com/weiraing",
+  "isDesktopOnly": false,
+  "minAppVersion": "0.14.0"
+}
