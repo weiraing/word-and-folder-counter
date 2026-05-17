@@ -1,0 +1,14 @@
+{
+  "name": "word-and-folder-counter",
+  "version": "1.0.3",
+  "description": "Counts words, characters, lines, pages, file sizes, and folder statistics for notes and directories.",
+  "main": "main.js",
+  "scripts": {
+    "build": "node esbuild.config.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "obsidian": "^1.8.10",
+    "typescript": "^5.8.3"
+  }
+}
